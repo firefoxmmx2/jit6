@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	 http://www.springframework.org/schema/context
+	 http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	
+
+	<bean id="dataSourceMysql" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://localhost:3306/test">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="missdark_mysql"></property>
+	</bean>
+	<!--<bean id="dataSourceMysql" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://216.227.211.75:3306/boangs0_fox">
+		</property>
+		<property name="username" value="boangs0_fox"></property>
+		<property name="password" value="dark_fox"></property>
+	</bean>-->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSourceMysql" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">
+					true
+				</prop>
+				<prop key="hibernate.format_sql">
+					true
+				</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+			</props>
+		</property>
+<!-- 		<property name="annotatedClasses"> -->
+<!-- 		  <list> -->
+<!-- 		      <value>bean.ConstantDefinition</value> -->
+<!-- 		      <value>bean.ConstantTemplate</value> -->
+<!-- 		  </list> -->
+<!-- 		</property> -->
+      <property name="packagesToScan">
+       <list>
+            <value>bean</value>
+        </list>
+        </property>
+	</bean>
+	<context:annotation-config></context:annotation-config> 
+	<context:component-scan base-package="dao,service,com.jit"></context:component-scan>
+
+
+</beans>
