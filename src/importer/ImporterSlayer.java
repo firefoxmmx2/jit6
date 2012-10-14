@@ -166,6 +166,11 @@ public class ImporterSlayer {
 
 	}
 
+	/**
+	 * 字符串空值验证，不为空返回true
+	 * @param str
+	 * @return true 不为空
+	 */
 	private boolean isNotEmpty(String str) {
 		if (str != null && str.trim().length() > 0)
 			return true;
@@ -188,6 +193,14 @@ public class ImporterSlayer {
 		return attrs;
 	}
 
+	/**
+	 * 获取反射方法
+	 * @param className
+	 * @param methodName
+	 * @param type
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
 	private FastMethod getMethod(String className, String methodName,
 			String type) throws ClassNotFoundException {
 		Map<String, Object> entityClass = (Map<String, Object>) globals
@@ -225,6 +238,12 @@ public class ImporterSlayer {
 		String name = (String) attrs.get("name");
 		String type = (String) attrs.get("type");
 		Integer column = Integer.getInteger((String) attrs.get("column"));
+		
+		///////////////////////处理部分/////////////////////
+		HSSFSheet sheet = (HSSFSheet) parentEnv.get("currentSheet");
+		
+		///////////////////////处理结束/////////////////////
+		
 	}
 
 	private Object getDataEntity(Element entityEl, Map<String, Object> parentEnv)
