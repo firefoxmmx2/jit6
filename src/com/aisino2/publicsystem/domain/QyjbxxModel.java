@@ -2,8 +2,6 @@ package com.aisino2.publicsystem.domain;
 
 import java.util.Date;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
 import com.aisino2.core.domain.BaseObject;
 
 public class QyjbxxModel extends BaseObject {

@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.poi.hssf.model.Workbook;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.jdom.Document;
@@ -243,6 +242,14 @@ public class CommonTest {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+			//实体属性
+			for(Element propertyEl : (List<Element>)entityEl.getChildren()){
+				
+				if(propertyEl.getName().equals("Entity") || propertyEl.getName().equals("Entities"))
+					buildEntities(propertyEl, locals, globals, rootEntityId);
+			}
+			
 			//当实体属性没有 multi 和 name的时候，才会添加到顶层集合中去。
 			if(multi && !isNotEmpty(name)){
 				String rootEntityType = globals.get(rootEntityId).getClass().getName();

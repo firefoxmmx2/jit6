@@ -8,68 +8,56 @@
 	</Dicts>
 
 	<Data>
-		<Entities worksheet="0"  id="ljxx" type="java.util.ArrayList" startrow="1" endrow="">
-			<Entity class="com.aisino2.jdy.domain.Ljjbxx" multi="true">
-				<property name="wldh" column="0" type="String"/>
+		<Entities class="com.aisino2.jdy.domain.Ljjbxx" worksheet="0"  id="ljxx" type="java.util.ArrayList" startrow="1" endrow="">
+				<property name="wldh" column="0" type="java.lang.String"/>
 				<Entity name="jjr" class="com.aisino2.jdy.domain.Rdrjbxx" >
-					<property name="xm" column="1" type="String"/>
-					<property name="zjlx" column="2" type="String"/>
-					<property name="zjhm" column="3" type="String"/>
-					<property name="ssx" column="4" type="String"/>
-					<property name="xxdz" column="5" type="String"/>
-					<property name="lxdh" column="6" type="String"/>
-					<property name="gddh" column="7" type="String"/>
+					<property name="xm" column="1" type="java.lang.String"/>
+					<property name="zjlx" column="2" type="java.lang.String"/>
+					<property name="zjhm" column="3" type="java.lang.String"/>
+					<property name="ssx" column="4" type="java.lang.String"/>
+					<property name="xxdz" column="5" type="java.lang.String"/>
+					<property name="lxdh" column="6" type="java.lang.String"/>
+					<property name="gddh" column="7" type="java.lang.String"/>
 				</Entity>
 				<Entity name="sjr" class="com.aisino2.jdy.domain.Rdrjbxx">
-					<property name="xm" column="8" type="String"/>
-					<property name="zjlx" column="9" type="String"/>
-					<property name="zjhm" column="10" type="String"/>
-					<property name="ssx" column="11" type="String"/>
-					<property name="xxdz" column="12" type="String"/>
-					<property name="lxdh" column="13" type="String"/>
-					<property name="gddh" column="14" type="String"/>
+					<property name="xm" column="8" type="java.lang.String"/>
+					<property name="zjlx" column="9" type="java.lang.String"/>
+					<property name="zjhm" column="10" type="java.lang.String"/>
+					<property name="ssx" column="11" type="java.lang.String"/>
+					<property name="xxdz" column="12" type="java.lang.String"/>
+					<property name="lxdh" column="13" type="java.lang.String"/>
+					<property name="gddh" column="14" type="java.lang.String"/>
 				</Entity>
 				<Entity name="ljr" class="com.aisino2.publicsystem.domain.Qyryxx">
-					<property name="cyrybh" column="15" type="String"/>
+					<property name="cyrybh" column="15" type="java.lang.String"/>
 				</Entity>
 				<property name="ljsj" column="16" type="java.util.Date"/>
 				<Entity name="ljtbr" class="com.aisino2.publicsystem.domain.Qyryxx">
-					<property name="cyrybh" column="17" type="String" value="${currentUser.cyrybh}"/>
+					<property name="cyrybh" column="17" type="java.lang.String" value="${currentUser.cyrybh}"/>
 				</Entity>
 	
-				<Entities name="jdp_list" type="java.util.ArrayList">
-					<Entity class="com.aisino2.jdy.domain.Jdpxx" column="20" propertySize="6" multi="true">
-						<property name="jdpmc" type="String"/>
-						<property name="jdpdlx" type="String"/>
-						<property name="jdplx" type="String"/>
-						<property name="jdpsm" type="String"/>
-						<property name="jdpzl" type="String"/>
-						<property name="jdptj" type="String"/>
+<!-- 				<Entities class="com.aisino2.jdy.domain.Jdpxx" name="jdp_list" type="java.util.ArrayList"> -->
+<!-- 						<property name="jdpmc" type="java.lang.String"/> -->
+<!-- 						<property name="jdpdlx" type="java.lang.String"/> -->
+<!-- 						<property name="jdplx" type="java.lang.String"/> -->
+<!-- 						<property name="jdpsm" type="java.lang.String"/> -->
+<!-- 						<property name="jdpzl" type="java.lang.String"/> -->
+<!-- 						<property name="jdptj" type="java.lang.String"/> -->
 <!-- 						<Dict name="jdpdlxmc" refDict="jdplxDict" factValue="${jdpdlx}"/> -->
 <!-- 						<Dict name="jdplxmc" refDict="jdplxDict" factValue="${jdplx}"/> -->
-					</Entity>
 					
-				</Entities>
-			</Entity>
+<!-- 				</Entities> -->
 		</Entities>
 		
 	</Data>
 	<Services>
-		<service id="getJdplxDict" resourceId="LjjbxxService">
-			<method methodName="getDictData" result="jdplxDict">
-				<param>
-					<Entity class="com.aisino2.sysadmin.domain.Dict_item">
-						<property name="dictcode">dm_</property>
-					</Entity>
-				</param>
-			</method>
-		</service>
 		<!--resourceId spring的支援ID-->
-		<service id="importLjxx" resourceId="LjjbxxService" >
-			<method methodName="insertLjjbxx">
-				<param refEntity="ljxx"/>
-				<!--<param refEntity="" refProperty="" type="">value</param> param和解析的顺序有关系。-->
-			</method>
+		<service id="importLjxx" resourceId="LjjbxxService" methodName="insertLjjbxx" >
+			<param refEntity="ljxx"/>
+			<!--<param refEntity="" refProperty="" type="" value="value">
+					<Entity class="">
+					</Entity>
+				</param> param和解析的顺序有关系。-->
 		</service>
 	</Services>
 
