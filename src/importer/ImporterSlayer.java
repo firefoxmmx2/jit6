@@ -15,10 +15,8 @@ import net.sf.cglib.reflect.FastClass;
 import net.sf.cglib.reflect.FastMethod;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.hssf.util.HSSFCellUtil;
 import org.jdom.Attribute;
 import org.jdom.Document;
 import org.jdom.Element;
@@ -26,7 +24,7 @@ import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.springframework.context.ApplicationContext;
 
-import sun.java2d.pipe.SpanShapeRenderer.Simple;
+import com.aisino2.jdy.domain.Ljjbxx;
 
 public class ImporterSlayer {
 	ApplicationContext context;
@@ -79,11 +77,7 @@ public class ImporterSlayer {
 	}
 
 	public void initService() {
-
-	}
-
-	public void initDict() {
-
+		Element rootElement = document.getRootElement();
 	}
 
 	/**
@@ -269,11 +263,12 @@ public class ImporterSlayer {
 							+ name.substring(1), className);
 			method.invoke(parentEnv.get("instance"), new Object[] { instance });
 		}
-		// 当父级实体是集合的时候添加当前实体到集合里面
-		collectionAdd(parentEnv.get("instance"), instance);
+		
 		if (startrow != null) {
 			for (int i = startrow; i <= endrow; i++) {
 				locals.put("currentRow", i);
+				// 当父级实体是集合的时候添加当前实体到集合里面
+				collectionAdd(parentEnv.get("instance"), instance);
 				// 实体属性
 				for (Element propertyEl : (List<Element>) entityEl
 						.getChildren()) {
@@ -294,6 +289,8 @@ public class ImporterSlayer {
 		} else if (propertySize != null && column != null) {
 			for (int i = 0; i < propertySize; i++) {
 				locals.put("propertyNum", i);
+				// 当父级实体是集合的时候添加当前实体到集合里面
+				collectionAdd(parentEnv.get("instance"), instance);
 				// 实体属性
 				for (Element propertyEl : (List<Element>) entityEl
 						.getChildren()) {
@@ -311,6 +308,8 @@ public class ImporterSlayer {
 				}
 			}
 		} else {
+			// 当父级实体是集合的时候添加当前实体到集合里面
+			collectionAdd(parentEnv.get("instance"), instance);
 			// 实体属性
 			for (Element propertyEl : (List<Element>) entityEl.getChildren()) {
 				if (propertyEl.getName().equals("Entities"))
@@ -432,7 +431,8 @@ public class ImporterSlayer {
 		 ImporterSlayer is = new ImporterSlayer("/物流单揽件批量导入模板.xls",
 		 "/LjxxImportPdf.xml", null);
 		 is.initData();
-		 List ljxx = (List)is.globals.get("ljxx");
+		 List<Ljjbxx> ljxx = (List<Ljjbxx>)is.globals.get("ljxx");
 		 System.out.println(ljxx.size());
+		 System.out.println(ljxx.get(0).getJdp_list().size());
 	}
 }

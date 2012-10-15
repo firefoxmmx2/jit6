@@ -9,7 +9,8 @@
 
 	<Data>
 		<Entities worksheet="0" id="ljxx" type="java.util.ArrayList">
-			<Entity class="com.aisino2.jdy.domain.Ljjbxx" startrow="1" endrow="" propertySize="">
+			<Entity class="com.aisino2.jdy.domain.Ljjbxx" startrow="1"
+				endrow="" propertySize="">
 				<property name="wldh" column="0" type="java.lang.String" />
 				<Entity name="jjr" class="com.aisino2.jdy.domain.Rdrjbxx">
 					<property name="xm" column="1" type="java.lang.String" />
@@ -33,24 +34,27 @@
 					<property name="cyrybh" column="15" type="java.lang.String" />
 				</Entity>
 				<property name="ljsj" column="16" type="java.util.Date" />
-<!-- 				<Entity name="ljtbr" class="com.aisino2.publicsystem.domain.Qyryxx"> -->
-<!-- 					<property name="cyrybh" column="17" type="java.lang.String" -->
-<!-- 						value="${currentUser.cyrybh}" /> -->
-<!-- 				</Entity> -->
+				<!-- <Entity name="ljtbr" class="com.aisino2.publicsystem.domain.Qyryxx"> -->
+				<!-- <property name="cyrybh" column="17" type="java.lang.String" -->
+				<!-- value="${currentUser.cyrybh}" /> -->
+				<!-- </Entity> -->
+
+				<Entities name="jdp_list" type="java.util.ArrayList">
+					<Entity class="com.aisino2.jdy.domain.Jdpxx" column="19"
+						propertySize="6">
+						<property name="jdpmc" type="java.lang.String" />
+						<property name="jdpdlx" type="java.lang.String" />
+						<property name="jdplx" type="java.lang.String" />
+						<property name="jdpsm" type="java.lang.String" />
+						<property name="jdpzl" type="java.lang.String" />
+						<property name="jdptj" type="java.lang.String" />
+					</Entity>
+
+				</Entities>
 			</Entity>
 
 
-			<!-- <Entities class="com.aisino2.jdy.domain.Jdpxx" name="jdp_list" type="java.util.ArrayList"> -->
-			<!-- <property name="jdpmc" type="java.lang.String"/> -->
-			<!-- <property name="jdpdlx" type="java.lang.String"/> -->
-			<!-- <property name="jdplx" type="java.lang.String"/> -->
-			<!-- <property name="jdpsm" type="java.lang.String"/> -->
-			<!-- <property name="jdpzl" type="java.lang.String"/> -->
-			<!-- <property name="jdptj" type="java.lang.String"/> -->
-			<!-- <Dict name="jdpdlxmc" refDict="jdplxDict" factValue="${jdpdlx}"/> -->
-			<!-- <Dict name="jdplxmc" refDict="jdplxDict" factValue="${jdplx}"/> -->
 
-			<!-- </Entities> -->
 		</Entities>
 
 	</Data>
