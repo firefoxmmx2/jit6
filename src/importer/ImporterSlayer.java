@@ -171,7 +171,8 @@ public class ImporterSlayer {
 		String worksheet = (String) attrs.get("worksheet");
 		// column 数据所在列数。
 		Integer column = getInteger((String) attrs.get("column"));
-
+		//cast
+		String castType = (String)attrs.get("cast");
 		// name
 		String name = (String) attrs.get("name");
 		// ///////////////////////处理部分///////////////////////////
@@ -203,7 +204,7 @@ public class ImporterSlayer {
 			String parentSubclass = (String) parentAttrs.get("class");
 			FastMethod method = getMethod(parentSubclass, "set"
 					+ name.substring(0, 1).toUpperCase() + name.substring(1),
-					type);
+					isNotEmpty(castType)? castType : type);
 
 			method.invoke(parentAttrs.get("instance"),
 					new Object[] { instance });

@@ -34,12 +34,8 @@
 					<property name="cyrybh" column="15" type="java.lang.String" />
 				</Entity>
 				<property name="ljsj" column="16" type="java.util.Date" />
-				<!-- <Entity name="ljtbr" class="com.aisino2.publicsystem.domain.Qyryxx"> -->
-				<!-- <property name="cyrybh" column="17" type="java.lang.String" -->
-				<!-- value="${currentUser.cyrybh}" /> -->
-				<!-- </Entity> -->
 
-				<Entities name="jdp_list" type="java.util.ArrayList">
+				<Entities name="jdp_list" type="java.util.ArrayList" cast="java.util.List">
 					<Entity class="com.aisino2.jdy.domain.Jdpxx" column="19"
 						propertySize="6">
 						<property name="jdpmc" type="java.lang.String" />
